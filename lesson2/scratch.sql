@@ -315,27 +315,31 @@
     WHERE DepartmentCity = 'Lviv' AND Sum > 5000
     GROUP BY Department_idDepartment;
 
-    
 
+    --#22. Знайти клієнтів, які повністю погасили кредити на суму більше ніж 5000
+    SELECT Sum(Sum) maxSum, FirstName, lastName
+    FROM client
+    JOIN application on Client_idClient = idClient
+    WHERE CreditState = 'Returned' and Sum > 5000
+    GROUP BY (Sum);
 
+    --#23. Знайти максимальний неповернений кредит.
+    SELECT MAX(Sum) maxSum, FirstName, lastName
+    FROM client
+    JOIN application on Client_idClient = idClient
+    WHERE CreditState = 'Not returned'
+    GROUP BY (Sum)
+    ORDER BY Sum DESC
+    LIMIT 1;
 
-
-
-    Знайти клієнтів, які повністю погасили кредити на суму більше ніж 5000
-
-
-
-
-
-    /* Знайти максимальний неповернений кредит.*/
-
-
-
-
-    /*Знайти клієнта, сума кредиту якого найменша*/
-
-
-
+    --#24 Знайти клієнта, сума кредиту якого найменша
+    SELECT MIN(Sum) maxSum, FirstName, lastName
+    FROM client
+    JOIN application on Client_idClient = idClient
+    WHERE CreditState = 'Not returned'
+    GROUP BY (Sum)
+    ORDER BY Sum
+    LIMIT 1;
 
     /*Знайти кредити, сума яких більша за середнє значення усіх кредитів*/
 
