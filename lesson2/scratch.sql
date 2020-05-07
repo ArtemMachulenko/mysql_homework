@@ -183,7 +183,7 @@ INSERT INTO `bank`.`application` (`idApplication`, `Sum`, `CreditState`, `Curren
 
 
 
-#місто чувака який набрав найбільше кредитів
+місто чувака який набрав найбільше кредитів
 
 
 
